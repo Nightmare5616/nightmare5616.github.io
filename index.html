@@ -48,7 +48,6 @@
     </div>
     <script>
         const questions = [
-            // Vergleichsoperatoren
             { category: "Vergleichsoperatoren", question: "Welcher Operator bedeutet 'Gleich'?", answers: ["=", "<>", "<", ">"], correct: "=" },
             { category: "Vergleichsoperatoren", question: "Welcher Operator bedeutet 'Ungleich'?", answers: ["<>", "=", "!="], correct: "<>" },
             { category: "Vergleichsoperatoren", question: "Welcher Operator bedeutet 'Kleiner'?", answers: ["<", ">", "<=", ">="], correct: "<" },
@@ -75,15 +74,16 @@
             { category: "Eingabeformat", question: "Welches Zeichen steht für eine zwingend erforderliche Zahl?", answers: ["0", "9", "#", "L"], correct: "0" },
             { category: "Eingabeformat", question: "Welches Zeichen steht für eine optional eingehbare Zahl?", answers: ["0", "9", "#", "L"], correct: "9" },
             { category: "Eingabeformat", question: "Welches Zeichen steht für eine Zahl, Plus-, Minus- oder Leerzeichen?", answers: ["#", "0", "9", "L"], correct: "#" },
-            { category: "Eingabeformat", question: "Welches Zeichen steht für einen Buchstaben?", answers: ["L", "0", "9", "#"], correct: "L" },
-            { category: "Eingabeformat", question: "Welches Zeichen steht für einen Buchstaben oder eine Zahl?", answers: ["A", "0", "9", "#"], correct: "A" },
-            { category: "Eingabeformat", question: "Welches Zeichen steht für ein beliebiges Zeichen oder eine Leertaste?", answers: ["&", "0", "9", "#"], correct: "&" },
+            { category: "Eingabeformat", question: "Welches Zeichen steht für einen Buchstaben (erforderlich)?", answers: ["L", "0", "9", "#"], correct: "L" },
+            { category: "Eingabeformat", question: "Welches Zeichen steht für einen Buchstaben (optional)?", answers: ["?", "0", "9", "#"], correct: "?" },
+            { category: "Eingabeformat", question: "Welches Zeichen steht für einen Buchstaben oder eine Zahl (erforderlich)?", answers: ["A", "0", "9", "#"], correct: "A" },
+            { category: "Eingabeformat", question: "Welches Zeichen steht für einen Buchstaben oder eine Zahl (optional)?", answers: ["a", "0", "9", "#"], correct: "a" },
+            { category: "Eingabeformat", question: "Welches Zeichen steht für ein beliebiges Zeichen oder eine Leertaste (optional)?", answers: ["&", "C", "0", "9"], correct: "&" },
+            { category: "Eingabeformat", question: "Welches Zeichen steht für ein beliebiges Zeichen oder eine Leertaste (optional)?", answers: ["C", "&", "0", "9"], correct: "C" },
+            { category: "Eingabeformat", question: "Welche Zeichen stehen für Dezimalkomma, Tausender-, Datums-, Uhrzeit-Trennzeichen (optional)?", answers: [". , ; - /", "0", "9", "#"], correct: ". , ; - /" },
             { category: "Eingabeformat", question: "Welches Zeichen wandelt nachfolgende Zeichen in Kleinbuchstaben um?", answers: ["<", ">", "!", "&"], correct: "<" },
             { category: "Eingabeformat", question: "Welches Zeichen wandelt nachfolgende Zeichen in Großbuchstaben um?", answers: [">", "<", "!", "&"], correct: ">" },
             { category: "Eingabeformat", question: "Welches Zeichen füllt die Vorlage von rechts nach links aus?", answers: ["!", "<", ">", "&"], correct: "!" },
-            { category: "Eingabeformat", question: "Welches Zeichen steht für eine optionale Dezimalzahl?", answers: [".", ",", ";", "-"], correct: "." },
-            { category: "Eingabeformat", question: "Welches Zeichen steht für eine optionale Tausendertrennzeichen?", answers: [",", ".", ";", "-"], correct: "," },
-            { category: "Eingabeformat", question: "Welches Zeichen steht für eine optionale Datums- oder Uhrzeit-Trennzeichen?", answers: ["-", "/", ";", ":"], correct: "-" },
             { category: "Eingabeformat", question: "Welches Zeichen maskiert die obigen Zeichen in einer Vorlage?", answers: ["\\", "/", "|", "*"], correct: "\\" }
         ];
         let currentQuestion = 0;
@@ -227,25 +227,21 @@
         </table>
         <h2>Eingabeformat</h2>
         <table>
-            <tr><th>Eingabeformatzeichen</th><th>Verwendung in Eingabeformaten</th></tr>
-            <tr><td>0</td><td>Zahl (erforderlich)</td></tr>
-            <tr><td>9</td><td>Zahl (optional)</td></tr>
-            <tr><td>#</td><td>Zahl, Plus-, Minus- oder Leerzeichen</td></tr>
-            <tr><td>L</td><td>Buchstabe (erforderlich)</td></tr>
-            <tr><td>A</td><td>Buchstabe oder Zahl (erforderlich)</td></tr>
-            <tr><td>a</td><td>Buchstabe oder Zahl (optional)</td></tr>
-            <tr><td>&</td><td>Beliebiges Zeichen oder Leertaste</td></tr>
-            <tr><td>C</td><td>Dezimalkomma, Tausender-, Datums-, Uhrzeit-Trennzeichen</td></tr>
-            <tr><td>.</td><td>Dezimalpunkt (optional)</td></tr>
-            <tr><td>,</td><td>Tausendertrennzeichen (optional)</td></tr>
-            <tr><td>-</td><td>Datums- oder Uhrzeit-Trennzeichen (optional)</td></tr>
-            <tr><td>/</td><td>Datums- oder Uhrzeit-Trennzeichen (optional)</td></tr>
-            <tr><td>;</td><td>Datums- oder Uhrzeit-Trennzeichen (optional)</td></tr>
-            <tr><td>:</td><td>Datums- oder Uhrzeit-Trennzeichen (optional)</td></tr>
-            <tr><td><</td><td>Wandelt nachfolgende Zeichen in Kleinbuchstaben um</td></tr>
-            <tr><td>></td><td>Wandelt nachfolgende Zeichen in Großbuchstaben um</td></tr>
-            <tr><td>!</td><td>Vorlage wird von rechts nach links ausgefüllt</td></tr>
-            <tr><td>\</td><td>Maskierung der obigen Zeichen in einer Vorlage</td></tr>
+            <tr><th>Eingabeformatzeichen</th><th>erforderlich</th><th>optional</th><th>Verwendung in Eingabeformaten</th></tr>
+            <tr><td>0</td><td>✓</td><td></td><td>Zahl</td></tr>
+            <tr><td>9</td><td></td><td>✓</td><td>Zahl</td></tr>
+            <tr><td>#</td><td></td><td>✓</td><td>Zahl, Plus-, Minus- oder Leerzeichen</td></tr>
+            <tr><td>L</td><td>✓</td><td></td><td>Buchstabe</td></tr>
+            <tr><td>?</td><td></td><td>✓</td><td>Buchstabe</td></tr>
+            <tr><td>A</td><td>✓</td><td></td><td>Buchstabe oder Zahl</td></tr>
+            <tr><td>a</td><td></td><td>✓</td><td>Buchstabe oder Zahl</td></tr>
+            <tr><td>&</td><td></td><td>✓</td><td>Beliebiges Zeichen oder Leertaste</td></tr>
+            <tr><td>C</td><td></td><td>✓</td><td>Beliebiges Zeichen oder Leertaste</td></tr>
+            <tr><td>., ;, - /</td><td></td><td>✓</td><td>Dezimalkomma, Tausender-, Datums-, Uhrzeit-Trennzeichen</td></tr>
+            <tr><td><</td><td></td><td></td><td>Wandelt nachfolgende Zeichen in Kleinbuchstaben um</td></tr>
+            <tr><td>></td><td></td><td></td><td>Wandelt nachfolgende Zeichen in Großbuchstaben um</td></tr>
+            <tr><td>!</td><td></td><td></td><td>Vorlage wird von rechts nach links ausgefüllt</td></tr>
+            <tr><td>\</td><td></td><td></td><td>Maskierung der obigen Zeichen in einer Vorlage</td></tr>
         </table>
     </div>
 </body>
