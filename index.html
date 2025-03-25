@@ -278,12 +278,10 @@
                 const score = `${correctCount}/${placeholders.length}`;
                 resultDiv.textContent = `Ergebnis: ${score}`;
 
-                // Reset nach 2 Sekunden
+                // Nach 2 Sekunden entfernen die Hervorhebungen
                 setTimeout(() => {
                     placeholders.forEach(placeholder => {
-                        placeholder.textContent = '';
                         placeholder.classList.remove('correct', 'incorrect');
-                        placeholder.classList.add('reset');
                     });
                 }, 2000);
             });
