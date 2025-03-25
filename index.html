@@ -3,246 +3,203 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Übersicht & Quiz</title>
+    <title>Lückentext Übung</title>
     <style>
-        body { font-family: Arial, sans-serif; text-align: center; background-color: #f4f4f4; margin: 0; height: 100vh; display: flex; justify-content: center; align-items: center; }
-        .container { width: 100vw; height: 100vh; background: white; padding: 40px; box-sizing: border-box; display: none; position: absolute; top: 0; left: 0; overflow-y: auto; }
-        .active { display: block; }
-        h1, h2, h3 { text-align: center; font-size: 2em; }
-        table { width: 100%; border-collapse: collapse; margin-top: 20px; font-size: 1.2em; }
-        th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }
-        th { background-color: #007BFF; color: white; }
-        button { margin: 15px; padding: 15px 30px; font-size: 1.2em; background-color: #007BFF; color: white; border: none; border-radius: 5px; cursor: pointer; }
-        button:hover { background-color: #0056b3; }
-        .back-button { position: absolute; top: 20px; right: 20px; background-color: #FF5733; font-size: 1.2em; }
-        .back-button:hover { background-color: #C70039; }
-        textarea {
-            width: 80%;
-            height: 50px;
-            margin-top: 20px;
-            font-size: 1.2em;
-            text-align: center;
-            resize: none;
+        /* CSS Stil */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
         }
-        .definition-answer {
+
+        h1 {
+            text-align: center;
+        }
+
+        #wordBank {
             display: flex;
-            flex-direction: column;
-            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .word {
+            background-color: #f0f0f0;
+            padding: 5px 10px;
+            border: 1px solid #ccc;
+            cursor: pointer;
+        }
+
+        #textArea p {
+            line-height: 1.6;
+        }
+
+        #textArea span {
+            border: 1px dashed #000;
+            padding: 0 5px;
+            font-weight: bold;
+        }
+
+        #checkButton {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
-    <div id="start-menu" class="container active">
-        <h1>Willkommen</h1>
-        <button onclick="showSection('table-container')">Tabellen anzeigen</button>
-        <button onclick="showQuizType('multiple-choice')">Multiple Choice Quiz starten</button>
-        <button onclick="showQuizType('definition')">Definition Quiz starten</button>
+    <h1>Argumentierender Sachtext - Lückentext Übung</h1>
+
+    <!-- Lückenwörter -->
+    <div id="wordBank">
+        <span class="word">Einleitung</span>
+        <span class="word">Hauptteil</span>
+        <span class="word">Kernaussage</span>
+        <span class="word">Argumente</span>
+        <span class="word">Sprache</span>
+        <span class="word">Stilmittel</span>
+        <span class="word">Satzbau</span>
+        <span class="word">Wortwahl</span>
+        <span class="word">Sprachstil</span>
+        <span class="word">Zielgruppe</span>
+        <span class="word">Schluss</span>
+        <span class="word">kritische Auseinandersetzung</span>
+        <span class="word">Bewertung</span>
+        <span class="word">Meinung</span>
+        <span class="word">Ausblick</span>
     </div>
-    <div id="quiz-container" class="container">
-        <button class="back-button" onclick="showSection('start-menu')">Zurück</button>
-        <h2 id="category"></h2>
-        <h3 id="question"></h3>
-        <div id="answers"></div>
-        <p id="feedback"></p>
-        <button id="next-btn" onclick="nextQuestion()" disabled>Weiter</button>
+
+    <!-- Lückentext -->
+    <div id="textArea">
+        <p>
+            1. <span></span><br>
+            - hier werden die zentralen Textinformationen benannt.<br>
+            - TATTE(Q)-Satz: Titel, Autor, Textsorte, Thema, Erscheinungsjahr und Quelle<br>
+            2. <span></span><br>
+            2.1. Darlegung der <span></span><br>
+            - Die Kernaussage ist die wichtigste Aussage des Textes zu dem Thema. Dies kann ein Argument, eine These oder auch ein Appell sein.<br>
+            2.2. strukturierte Inhaltswiedergabe<br>
+            - Bei der Inhaltswiedergabe sollen die <span></span> des Textes auch als solche benannt werden.<br>
+            - Außerdem sollten die Argumente kategorisiert werden. (Argumenttypen)<br>
+            2.3. Analyse der sprachlichen Gestaltung<br>
+            - die <span></span> des Textes kann auf verschiedenen Ebenen analysiert werden:<br>
+            - <span></span> (Aufzählungen, Metaphern, Übertreibungen, Ellipsen...)<br>
+            - <span></span> (hypotaktisch, paartaktisch)<br>
+            - <span></span> (Warum werden bestimmte Begriffe verwendet?)<br>
+            - <span></span> (Standardsprache, Umgangssprache, Jugendsprache, Fachsprache...)<br>
+            - wichtig ist, dass die Auffälligkeiten nicht nur benannt werden, es muss auch gedeutet werden, welche Funktion und Wirkung dies für den Leser hat!<br>
+            2.4. Darlegung von Absicht und Funktion des Textes<br>
+            - an diesem Punkt sollen die folgenden Fragen beantwortet werden:<br>
+            - Welches Ziel will der Text erreichen?<br>
+            - Hat er das Ziel erreicht oder könnte er es erreichen?<br>
+            - Welche <span></span> spricht der Text an?<br>
+            3. <span></span><br>
+            3.1. kurze Zusammenfassung des Hauptteils<br>
+            3.2. <span></span> mit den Argumenten des Textes<br>
+            - entsprechen die Argumente/Argumentstützen den eigenen Erfahrungen und Vorstellungen? (Gültigkeit/Plausibilität)<br>
+            - sind die Argumente/Argumentstützen passend für das Thema? (Relevanz)<br>
+            - sind die Argumente/Argumentstützen richtig oder überprüfbar? (Überprüfbarkeit)<br>
+            - sind die Argumente/Argumentstützen für den aktuellen Diskurs von Bedeutung? (Aktualität)<br>
+            - sind die Argumente/Argumentstützen für Adressaten passend gewählt und formuliert? (Adressatenorientierung)<br>
+            3.3. abschließende <span></span> des Textes<br>
+            - hierfür können die folgenden Fragen als Orientierung genutzt werden:<br>
+            - Ist der Text ein wichtiger Beitrag für das Thema?<br>
+            - Bezieht der Autor eine nachvollziehbare Position?<br>
+            - Ist der Text (für die Zielgruppe, das aktuelle Thema, die Textsorte) angemessen?<br>
+            3.4. Darlegung der eigenen <span></span><br>
+            - Es kann der Meinung des Autors widersprochen oder zugestimmt werden. Es ist möglich weitere, eigene Argumente zu nennen, welche der Text nicht beachtet.<br>
+            3.5. <span></span><br>
+            - Einschätzung darüber, wie das Thema in Zukunft diskutiert werden wird und ob bestimmte Inhalte des Textes besonders relevant sein werden.
+        </p>
     </div>
+
+    <!-- Überprüfungsknopf -->
+    <button id="checkButton">Überprüfen</button>
+
+    <!-- Ergebnis-Anzeige -->
+    <div id="result"></div>
+
     <script>
-        const questions = [
-            { category: "Vergleichsoperatoren", question: "Welcher Operator bedeutet 'Gleich'?", answers: ["=", "<>", "<", ">"], correct: "=" },
-            { category: "Vergleichsoperatoren", question: "Welcher Operator bedeutet 'Ungleich'?", answers: ["<>", "=", "!="], correct: "<>" },
-            { category: "Vergleichsoperatoren", question: "Welcher Operator bedeutet 'Kleiner'?", answers: ["<", ">", "<=", ">="], correct: "<" },
-            { category: "Vergleichsoperatoren", question: "Welcher Operator bedeutet 'Größer'?", answers: [">", "<", "<=", ">="], correct: ">" },
-            { category: "Vergleichsoperatoren", question: "Welcher Operator bedeutet 'Kleiner gleich'?", answers: ["<=", ">=", "<", ">"], correct: "<=" },
-            { category: "Vergleichsoperatoren", question: "Welcher Operator bedeutet 'Größer gleich'?", answers: [">=", "<=", "<", ">"], correct: ">=" },
-            // Platzhalter für Zeichen
-            { category: "Platzhalter", question: "Welches Zeichen steht für beliebig viele Zeichen?", answers: ["*", "?", "#", "[ ]"], correct: "*" },
-            { category: "Platzhalter", question: "Welches Zeichen steht für genau ein beliebiges Zeichen?", answers: ["*", "?", "#", "[ ]"], correct: "?" },
-            { category: "Platzhalter", question: "Welches Zeichen steht für ein beliebiges numerisches Zeichen?", answers: ["#", "*", "?", "[ ]"], correct: "#" },
-            { category: "Platzhalter", question: "Welches Zeichen steht für ein Zeichen aus einer Menge?", answers: ["[ ]", "*", "?", "#"], correct: "[ ]" },
-            { category: "Platzhalter", question: "Welches Zeichen steht für ein Zeichen nicht aus einer Menge?", answers: ["[! ]", "*", "?", "#"], correct: "[! ]" },
-            { category: "Platzhalter", question: "Welches Zeichen steht für ein Zeichen aus einem Bereich?", answers: ["[ - ]", "*", "?", "#"], correct: "[ - ]" },
-            // Gültigkeitsregeln
-            { category: "Gültigkeitsregeln", question: "Welche Regel gibt an, dass der Wert ungleich Null sein muss?", answers: ["<> 0", "0 oder >100", "wie 'HSK*'"], correct: "<> 0" },
-            { category: "Gültigkeitsregeln", question: "Welche Regel gibt an, dass der Wert entweder Null oder größer als 100 sein muss?", answers: ["0 oder >100", "<> 0", "wie 'HSK*'"], correct: "0 oder >100" },
-            { category: "Gültigkeitsregeln", question: "Welche Regel gibt an, dass der Wert mit den Großbuchstaben HSK beginnen muss?", answers: ["wie 'HSK*'", "<> 0", "0 oder >100"], correct: "wie 'HSK*'" },
-            { category: "Gültigkeitsregeln", question: "Welche Regel gibt an, dass das Datum vor dem 1.1.2011 liegen muss?", answers: ["<#1.1.2011#", ">= #1.1.2011# und < #1.1.2012#"], correct: "<#1.1.2011#" },
-            { category: "Gültigkeitsregeln", question: "Welche Regel gibt an, dass das Datum im Kalenderjahr 2011 liegen muss?", answers: [">= #1.1.2011# und < #1.1.2012#", "<#1.1.2011#"], correct: ">= #1.1.2011# und < #1.1.2012#" },
-            { category: "Gültigkeitsregeln", question: "Welche Regel gibt an, dass das Geburtsdatum vor dem 1.1.2000 liegen muss?", answers: ["[Geburtsdatum] < #1.1.2000#", "<#1.1.2011#", ">= #1.1.2011# und < #1.1.2012#"], correct: "[Geburtsdatum] < #1.1.2000#" },
-            { category: "Gültigkeitsregeln", question: "Welche Regel gibt an, dass das Geburtsdatum mindestens 18 Jahre zurückliegen muss?", answers: ["Jahr(Jetzt())-18 > Jahr([Geburtsdatum])", "<#1.1.2011#", ">= #1.1.2011# und < #1.1.2012#"], correct: "Jahr(Jetzt())-18 > Jahr([Geburtsdatum])" },
-            { category: "Gültigkeitsregeln", question: "Welche Regel gibt an, dass der Verkaufspreis mindestens 5% über dem Einkaufspreis liegen muss?", answers: ["[Verkaufspreis] > [Einkaufspreis] * 1,05", "<#1.1.2011#", ">= #1.1.2011# und < #1.1.2012#"], correct: "[Verkaufspreis] > [Einkaufspreis] * 1,05" },
-            // Eingabeformat (ALLE ZEICHEN ABFRAGEN)
-            { category: "Eingabeformat", question: "Welches Zeichen steht für eine zwingend erforderliche Zahl?", answers: ["0", "9", "#", "L"], correct: "0" },
-            { category: "Eingabeformat", question: "Welches Zeichen steht für eine optional eingehbare Zahl?", answers: ["0", "9", "#", "L"], correct: "9" },
-            { category: "Eingabeformat", question: "Welches Zeichen steht für eine Zahl, Plus-, Minus- oder Leerzeichen?", answers: ["#", "0", "9", "L"], correct: "#" },
-            { category: "Eingabeformat", question: "Welches Zeichen steht für einen Buchstaben (erforderlich)?", answers: ["L", "0", "9", "#"], correct: "L" },
-            { category: "Eingabeformat", question: "Welches Zeichen steht für einen Buchstaben (optional)?", answers: ["?", "0", "9", "#"], correct: "?" },
-            { category: "Eingabeformat", question: "Welches Zeichen steht für einen Buchstaben oder eine Zahl (erforderlich)?", answers: ["A", "0", "9", "#"], correct: "A" },
-            { category: "Eingabeformat", question: "Welches Zeichen steht für einen Buchstaben oder eine Zahl (optional)?", answers: ["a", "0", "9", "#"], correct: "a" },
-            { category: "Eingabeformat", question: "Welches Zeichen steht für ein beliebiges Zeichen oder eine Leertaste (erforderlich)?", answers: ["&", "C", "0", "9"], correct: "&" },
-            { category: "Eingabeformat", question: "Welches Zeichen steht für ein beliebiges Zeichen oder eine Leertaste (optional)?", answers: ["C", "&", "0", "9"], correct: "C" },
-            { category: "Eingabeformat", question: "Welche Zeichen stehen für Dezimalkomma, Tausender-, Datums-, Uhrzeit-Trennzeichen (optional)?", answers: [". , ; - /", "0", "9", "#"], correct: ". , ; - /" },
-            { category: "Eingabeformat", question: "Welches Zeichen wandelt nachfolgende Zeichen in Kleinbuchstaben um?", answers: ["<", ">", "!", "&"], correct: "<" },
-            { category: "Eingabeformat", question: "Welches Zeichen wandelt nachfolgende Zeichen in Großbuchstaben um?", answers: [">", "<", "!", "&"], correct: ">" },
-            { category: "Eingabeformat", question: "Welches Zeichen füllt die Vorlage von rechts nach links aus?", answers: ["!", "<", ">", "&"], correct: "!" },
-            { category: "Eingabeformat", question: "Welches Zeichen maskiert die obigen Zeichen in einer Vorlage?", answers: ["\\", "/", "|", "*"], correct: "\\" }
-        ];
-        let currentQuestion = 0;
-        let score = 0;
-        let quizType = '';
+        // JavaScript Logik
+        document.addEventListener('DOMContentLoaded', () => {
+            const wordBank = document.getElementById('wordBank');
+            const textArea = document.getElementById('textArea');
+            const checkButton = document.getElementById('checkButton');
+            const resultDiv = document.getElementById('result');
 
-        function shuffleArray(array) {
-            for (let i = array.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [array[i], array[j]] = [array[j], array[i]];
-            }
-            return array;
-        }
-
-        function showSection(sectionId) {
-            document.querySelectorAll('.container').forEach(section => {
-                section.classList.remove('active');
+            // Erstelle Span-Elemente für die Lücken
+            const placeholders = Array.from(textArea.querySelectorAll('span'));
+            placeholders.forEach((placeholder, index) => {
+                placeholder.dataset.index = index;
+                placeholder.addEventListener('dragover', dragOver);
+                placeholder.addEventListener('drop', dropWord);
             });
-            document.getElementById(sectionId).classList.add('active');
-            if (sectionId === 'quiz-container') loadQuestion();
-        }
 
-        function showQuizType(type) {
-            quizType = type;
-            showSection('quiz-container');
-        }
+            // Erstelle Drag-Events für die Wörter
+            const words = Array.from(wordBank.querySelectorAll('.word'));
+            words.forEach(word => {
+                word.draggable = true;
+                word.addEventListener('dragstart', dragStart);
+            });
 
-        function loadQuestion() {
-            let q = questions[currentQuestion];
-            document.getElementById("category").innerText = `Thema: ${q.category}`;
-            document.getElementById("question").innerText = q.question;
-            let answersDiv = document.getElementById("answers");
-            answersDiv.innerHTML = "";
-            document.getElementById("feedback").innerText = "";
-            let nextBtn = document.getElementById("next-btn");
-            nextBtn.disabled = true;
+            // Drag-Start-Event
+            function dragStart(event) {
+                event.dataTransfer.setData('text/plain', event.target.textContent);
+            }
 
-            if (quizType === 'multiple-choice') {
-                // Shuffle the answers array
-                let shuffledAnswers = shuffleArray([...q.answers]);
-                shuffledAnswers.forEach(answer => {
-                    let btn = document.createElement("button");
-                    btn.innerText = answer;
-                    btn.onclick = () => checkAnswer(answer, btn);
-                    answersDiv.appendChild(btn);
+            // Drag-Over-Event
+            function dragOver(event) {
+                event.preventDefault();
+            }
+
+            // Drop-Event
+            function dropWord(event) {
+                event.preventDefault();
+                const word = event.dataTransfer.getData('text/plain');
+                this.textContent = word;
+                this.classList.add('filled');
+            }
+
+            // Überprüfungsfunktion
+            checkButton.addEventListener('click', () => {
+                const correctWords = [
+                    'Einleitung',
+                    'Hauptteil',
+                    'Kernaussage',
+                    'Argumente',
+                    'Sprache',
+                    'Stilmittel',
+                    'Satzbau',
+                    'Wortwahl',
+                    'Sprachstil',
+                    'Zielgruppe',
+                    'Schluss',
+                    'kritische Auseinandersetzung',
+                    'Bewertung',
+                    'Meinung',
+                    'Ausblick'
+                ];
+
+                let correctCount = 0;
+
+                placeholders.forEach((placeholder, index) => {
+                    if (placeholder.textContent === correctWords[index]) {
+                        placeholder.style.color = 'green';
+                        correctCount++;
+                    } else {
+                        placeholder.style.color = 'red';
+                    }
                 });
-            } else if (quizType === 'definition') {
-                let definitionAnswerDiv = document.createElement("div");
-                definitionAnswerDiv.className = "definition-answer";
-                let textarea = document.createElement("textarea");
-                textarea.placeholder = "Bitte geben Sie Ihre Antwort ein.";
-                definitionAnswerDiv.appendChild(textarea);
-                let submitBtn = document.createElement("button");
-                submitBtn.innerText = "Antworten";
-                submitBtn.onclick = () => checkDefinitionAnswer(q.correct, textarea.value);
-                definitionAnswerDiv.appendChild(submitBtn);
-                answersDiv.appendChild(definitionAnswerDiv);
-            }
-        }
 
-        function checkAnswer(answer, btn) {
-            let q = questions[currentQuestion];
-            let feedback = document.getElementById("feedback");
-            let nextBtn = document.getElementById("next-btn");
-            if (answer === q.correct) {
-                score++;
-                feedback.innerText = "Richtig!";
-                feedback.style.color = "green";
-            } else {
-                feedback.innerText = `Falsch! Die richtige Antwort ist: ${q.correct}`;
-                feedback.style.color = "red";
-            }
-            document.querySelectorAll("#answers button").forEach(b => b.disabled = true);
-            nextBtn.disabled = false;
-        }
-
-        function checkDefinitionAnswer(correct, userAnswer) {
-            // Normalize both the correct answer and the user's input
-            let normalizedCorrect = correct.toLowerCase().trim().replace(/\s+/g, ' ');
-            let normalizedUserAnswer = userAnswer.toLowerCase().trim().replace(/\s+/g, ' ');
-
-            let feedback = document.getElementById("feedback");
-            let nextBtn = document.getElementById("next-btn");
-
-            if (normalizedUserAnswer === normalizedCorrect) {
-                score++;
-                feedback.innerText = "Richtig!";
-                feedback.style.color = "green";
-            } else {
-                feedback.innerText = `Falsch! Die richtige Antwort ist: ${correct}`;
-                feedback.style.color = "red";
-            }
-            nextBtn.disabled = false;
-        }
-
-        function nextQuestion() {
-            currentQuestion++;
-            if (currentQuestion < questions.length) {
-                loadQuestion();
-            } else {
-                alert(`Quiz beendet! Du hast ${score} von ${questions.length} richtig.`);
-                showSection('start-menu');
-            }
-        }
+                const score = `${correctCount}/${placeholders.length}`;
+                resultDiv.textContent = `Ergebnis: ${score}`;
+            });
+        });
     </script>
-    <div id="table-container" class="container">
-        <button class="back-button" onclick="showSection('start-menu')">Zurück</button>
-        <h1>Übersicht Sonder- und Steuerzeichen</h1>
-        <h2>Vergleichsoperatoren</h2>
-        <table>
-            <tr><th>Operator</th><th>Bedeutung</th></tr>
-            <tr><td>=</td><td>Gleich</td></tr>
-            <tr><td><</td><td>Kleiner</td></tr>
-            <tr><td>></td><td>Größer</td></tr>
-            <tr><td><></td><td>Ungleich</td></tr>
-            <tr><td><=</td><td>Kleiner gleich</td></tr>
-            <tr><td>>=</td><td>Größer gleich</td></tr>
-        </table>
-        <h2>Platzhalter für Zeichen</h2>
-        <table>
-            <tr><th>Platzhalter</th><th>Bedeutung</th><th>Beispiel</th><th>Beispieltreffer</th></tr>
-            <tr><td>*</td><td>Beliebig viele Zeichen</td><td>B*</td><td>Bonn, Braut, ...</td></tr>
-            <tr><td>?</td><td>Ein beliebiges Zeichen</td><td>M??er</td><td>Mauer, Meier, ...</td></tr>
-            <tr><td>#</td><td>Ein beliebiges nummerisches Zeichen</td><td>59#59</td><td>59159, 59659, ...</td></tr>
-            <tr><td>[ ]</td><td>Ein Zeichen aus einer Menge</td><td>Ma[iy]er</td><td>Maier, Mayer, ...</td></tr>
-            <tr><td>[! ]</td><td>Ein Zeichen nicht aus einer Menge</td><td>Ma[!iy]er</td><td>Maler, Mauer, ...</td></tr>
-            <tr><td>[ - ]</td><td>Ein Zeichen aus einem Bereich</td><td>Ma[a-l]er</td><td>Maier, Maler, ...</td></tr>
-        </table>
-        <h2>Gültigkeitsregeln</h2>
-        <table>
-            <tr><th>Gültigkeitsregel</th><th>Bedeutung / Gültigkeitsmeldung</th></tr>
-            <tr><td><> 0</td><td>Geben Sie einen Wert ungleich Null ein.</td></tr>
-            <tr><td>0 oder >100</td><td>Der Wert muss entweder Null oder größer als 100 sein.</td></tr>
-            <tr><td>wie 'HSK*'</td><td>Der Wert muss mit den Großbuchstaben HSK beginnen.</td></tr>
-            <tr><td>wie '*e?'</td><td>Der Wert muss an der vorletzten Stelle ein 'e' besitzen.</td></tr>
-            <tr><td><#1.1.2011#</td><td>Geben Sie ein Datum vor dem 1.1.2011 ein.</td></tr>
-            <tr><td>>= #1.1.2011# und < #1.1.2012#</td><td>Das Datum muss im Kalenderjahr 2011 liegen.</td></tr>
-            <tr><td>[Geburtsdatum] < #1.1.2000#</td><td>Das Geburtsdatum muss vor dem 1.1.2000 liegen.</td></tr>
-            <tr><td>Jahr(Jetzt())-18 > Jahr([Geburtsdatum])</td><td>Das Geburtsdatum muss mindestens 18 Jahre zurückliegen.</td></tr>
-            <tr><td>[Verkaufspreis] > [Einkaufspreis] * 1,05</td><td>Der Verkaufspreis muss mindestens 5% über dem Einkaufspreis liegen.</td></tr>
-        </table>
-        <h2>Eingabeformat</h2>
-        <table>
-            <tr><th>Eingabeformatzeichen</th><th>erforderlich</th><th>optional</th><th>Verwendung in Eingabeformaten</th></tr>
-            <tr><td>0</td><td>✓</td><td></td><td>Zahl</td></tr>
-            <tr><td>9</td><td></td><td>✓</td><td>Zahl</td></tr>
-            <tr><td>#</td><td></td><td>✓</td><td>Zahl, Plus-, Minus- oder Leerzeichen</td></tr>
-            <tr><td>L</td><td>✓</td><td></td><td>Buchstabe</td></tr>
-            <tr><td>?</td><td></td><td>✓</td><td>Buchstabe</td></tr>
-            <tr><td>A</td><td>✓</td><td></td><td>Buchstabe oder Zahl</td></tr>
-            <tr><td>a</td><td></td><td>✓</td><td>Buchstabe oder Zahl</td></tr>
-            <tr><td>&</td><td>✓</td><td></td><td>Beliebiges Zeichen oder Leertaste</td></tr>
-            <tr><td>C</td><td></td><td>✓</td><td>Beliebiges Zeichen oder Leertaste</td></tr>
-            <tr><td>., ;, - /</td><td></td><td>✓</td><td>Dezimalkomma, Tausender-, Datums-, Uhrzeit-Trennzeichen</td></tr>
-            <tr><td><</td><td></td><td></td><td>Wandelt nachfolgende Zeichen in Kleinbuchstaben um</td></tr>
-            <tr><td>></td><td></td><td></td><td>Wandelt nachfolgende Zeichen in Großbuchstaben um</td></tr>
-            <tr><td>!</td><td></td><td></td><td>Vorlage wird von rechts nach links ausgefüllt</td></tr>
-            <tr><td>\</td><td></td><td></td><td>Maskierung der obigen Zeichen in einer Vorlage</td></tr>
-        </table>
-    </div>
 </body>
 </html>
