@@ -5,50 +5,130 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lückentext Übung</title>
     <style>
-        /* CSS Stil */
+        /* Allgemeine Stile */
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
             margin: 20px;
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
         }
 
         h1 {
             text-align: center;
+            color: #4CAF50;
+            animation: fadeIn 1.5s ease-in-out;
         }
 
+        /* Word-Bank */
         #wordBank {
             display: flex;
             flex-wrap: wrap;
             gap: 10px;
+            justify-content: center;
             margin-bottom: 20px;
         }
 
         .word {
-            background-color: #f0f0f0;
-            padding: 5px 10px;
-            border: 1px solid #ccc;
+            background-color: #e7f3fe;
+            border: 1px solid #4CAF50;
+            padding: 10px 15px;
+            border-radius: 5px;
             cursor: pointer;
+            transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
+        }
+
+        .word:hover {
+            background-color: #d1e7dd;
+            transform: scale(1.1);
+        }
+
+        /* Text Area */
+        #textArea {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
         }
 
         #textArea p {
-            line-height: 1.6;
+            font-size: 16px;
         }
 
         #textArea span {
-            border: 1px dashed #000;
-            padding: 0 5px;
-            font-weight: bold;
+            border: 1px dashed #4CAF50;
+            padding: 5px 10px;
+            border-radius: 5px;
+            min-width: 100px;
+            text-align: center;
+            transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
         }
 
+        /* Button */
         #checkButton {
+            display: block;
+            margin: 0 auto;
             padding: 10px 20px;
             font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
             cursor: pointer;
+            transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
         }
 
+        #checkButton:hover {
+            background-color: #45a049;
+            transform: scale(1.05);
+        }
+
+        /* Result */
         #result {
-            margin-top: 20px;
+            text-align: center;
             font-size: 18px;
             font-weight: bold;
+            margin-top: 20px;
+            opacity: 0;
+            animation: fadeIn 1.5s ease-in-out forwards;
+        }
+
+        /* Animationen */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Farben für Feedback */
+        .correct {
+            background-color: #d1e7dd;
+            color: #155724;
+        }
+
+        .incorrect {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+
+        /* Reset Animation */
+        .reset {
+            animation: resetColor 0.5s ease-in-out forwards;
+        }
+
+        @keyframes resetColor {
+            from {
+                background-color: #f8d7da;
+                color: #721c24;
+            }
+            to {
+                background-color: transparent;
+                color: #333;
+            }
         }
     </style>
 </head>
@@ -125,7 +205,6 @@
     <div id="result"></div>
 
     <script>
-        // JavaScript Logik
         document.addEventListener('DOMContentLoaded', () => {
             const wordBank = document.getElementById('wordBank');
             const textArea = document.getElementById('textArea');
@@ -189,15 +268,24 @@
 
                 placeholders.forEach((placeholder, index) => {
                     if (placeholder.textContent === correctWords[index]) {
-                        placeholder.style.color = 'green';
+                        placeholder.classList.add('correct');
                         correctCount++;
                     } else {
-                        placeholder.style.color = 'red';
+                        placeholder.classList.add('incorrect');
                     }
                 });
 
                 const score = `${correctCount}/${placeholders.length}`;
                 resultDiv.textContent = `Ergebnis: ${score}`;
+
+                // Reset nach 2 Sekunden
+                setTimeout(() => {
+                    placeholders.forEach(placeholder => {
+                        placeholder.textContent = '';
+                        placeholder.classList.remove('correct', 'incorrect');
+                        placeholder.classList.add('reset');
+                    });
+                }, 2000);
             });
         });
     </script>
