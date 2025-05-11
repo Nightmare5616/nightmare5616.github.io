@@ -1,0 +1,171 @@
+:root{
+    --headfoot: #000000;
+    --nav: #000000;
+    --textbox: #000000;
+    --hintergrund: linear-gradient(180deg, #000000, #131313);
+    --border-headfoot: #000000;
+    --text-color: #FFFFFF;
+    scrollbar-color: grey #131313;
+}
+html, body{
+    font-family: Arial;
+    padding: 0;
+    margin: 0;
+    height: auto;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    background: var(--hintergrund);
+}
+header{
+    color: var(--text-color);
+    background: var(--headfoot);
+    text-align: center;
+    width: 100%;
+    height: 15%;
+    border: 1px solid var(--border-headfoot);
+    position: fixed;
+    z-index: 1;
+}
+nav{
+    margin-top: 30%;
+}
+.container{
+    overflow-x: scroll;
+    overflow-y: hidden;
+    width: 100%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    scroll-snap-type: x mandatory;
+    display: flex;
+}
+.img-container a img{
+    width: 300px;
+    height: 500px;
+    margin-left: 50%;
+    margin-right: 300px;
+    scroll-snap-align: center;
+}
+.fa{
+    padding: 10px;
+    font-size: 15px;
+    width: 20px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 50%;
+    margin-top: 10px;
+}
+.fa-facebook{
+    background: #3B5998;
+    color: white;
+}
+.fa-twitter{
+    background: #55ACEE;
+    color: white;
+}
+.fa-instagram{
+    background: linear-gradient(180deg, #833ab4,#fd1d1d,#fcb045);
+    color: white;
+}
+a .text-box{
+    position: sticky;
+    margin-left: 50%;
+    bottom: 10%; 
+    width: 280px;
+    background-color: var(--textbox);
+    color: var(--text-color);
+    border: 1px white solid;
+}
+a{
+    color: var(--text-color);
+    text-decoration: none;
+}
+.text-box{
+    font-size: small;
+    padding: 10px;
+    color: var(--text-color);
+}
+footer{
+    color: var(--text-color);
+    font-size: 125%;
+    background: transparent;
+    text-align: center;
+    padding: 10px;
+}
+footer h6{
+    display: flex;
+    justify-content: space-between;
+}
+@media screen and (min-width: 700px) and (orientation: portrait) {
+    .img-container a img{
+        width: 600px;
+        height: 1000px;
+    }
+    header{
+        font-size: 200%;
+    }
+    a .text-box{
+        width: 580px;
+        font-size: 30px;
+    }
+    footer{
+        font-size: 30px;
+    }
+    .fa{
+        width: 30px;
+    }
+}
+@media screen and (min-width: 700px) and (orientation: landscape) {
+    .container{
+        overflow-x: hidden;
+        margin-bottom: 0;
+        height: 100%;
+        scroll-snap-type: none;
+        justify-content: space-around;
+    }
+    .img-container a img{
+        margin: 0;
+        width: 300px;
+        height: 500px;
+    }
+    a .text-box{
+        margin: 0;
+        position: relative;
+        bottom: 100px;
+        width: 280px;
+    }
+    nav{
+        margin-top: 100px;
+    }
+}
+@media screen and (min-width: 1400px){
+    header{
+        font-size: 160%;
+    }
+    nav{
+        margin-top: 5%;
+    }
+    .img-container{
+        gap: 0;
+    }
+    .img-container a img{
+        width: 500px;
+        height: 800px;
+    }
+    .fa{
+        width: 23px;
+    }
+    a .text-box{
+        width: 480px;
+        position: relative;
+        bottom: -1000px;
+        transition: bottom 0.5s ease;
+    }
+    .img-container a:hover .text-box{
+        bottom: 100px;
+    }
+    footer{
+        font-size: 140%;
+        margin-top: 0;
+    }
+}
